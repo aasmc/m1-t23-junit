@@ -9,30 +9,31 @@ public class DiscountCalculatorTest {
 
     @Test
     public void shouldGiveNoDiscountForValue999() {
-        // Подготовка
-        int buySum = 999;
-        int expectedSum = 999;
-
-        // Исполнение
-        int resultSum = discountCalculator.sumAfterDiscount(buySum);
-
-        // Проверка
-        Assertions.assertEquals(expectedSum, resultSum);
+        testInternal(999, 999);
     }
 
     @Test
     public void shouldGiveNoDiscountForValue1() {
+        testInternal(1, 1);
     }
 
     @Test
     public void shouldGiveNoDiscountForValue333() {
+        testInternal(333, 333);
     }
 
     @Test
     public void shouldGive2PercentDiscountForValue1000() {
+        testInternal(1000, 980);
     }
 
     @Test
     public void shouldGive2PercentDiscountForValue2000() {
+        testInternal(2000, 1960);
+    }
+
+    private void testInternal(int buySum, int expected) {
+        int result = discountCalculator.sumAfterDiscount(buySum);
+        Assertions.assertEquals(expected, result);
     }
 }
